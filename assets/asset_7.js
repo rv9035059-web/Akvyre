@@ -464,7 +464,7 @@ const INDUSTRY_WHY = [
 ];
 
 const getIndustryIcon = (slug) => {
-  const props = { width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.2", className: "ind-svg-icon" };
+  const props = { width: "32", height: "32", viewBox: "0 0 24 24", fill: "none", stroke: "var(--amber)", strokeWidth: "1.6", className: "ind-svg-icon" };
   if (slug === "technology") {
     return (
       <svg {...props}>

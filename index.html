@@ -3153,6 +3153,21 @@
       margin-bottom: 28px;
     }
 
+    .ind-showcase-panel .ind-svg-icon {
+      color: var(--amber) !important;
+      stroke: var(--amber) !important;
+      width: 32px;
+      height: 32px;
+      stroke-width: 1.6;
+      opacity: 0.95;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .ind-showcase-panel:hover .ind-svg-icon {
+      transform: scale(1.1) rotate(3deg);
+      opacity: 1;
+    }
+
     .ind-showcase-panel .showcase-label {
       color: var(--amber);
       font-family: 'Inter', sans-serif;
