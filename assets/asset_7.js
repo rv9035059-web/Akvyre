@@ -24,7 +24,7 @@ function AboutPage() {
             <div className="md:col-span-8 md:col-start-5">
               <div className="max-w-column space-y-7" style={{ fontSize: 17, lineHeight: 1.7 }}>
                 <p>
-                  Akvyre was founded in 2024 by Akshay Tyagi and Vaayu Goyal, after a decade each at two of India's most demanding commercial firms. The thesis was simple, and remains so: that the best work happens when the lawyer doing the thinking is the lawyer in the room — and that clients in significant matters deserve direct access to senior counsel, not layered through a chain of associates.
+                  Akvyre was founded in 2024 by Akshay Tyagi and Vaayu Goyal, after spending a decade deep in commercial matters across industries. The thesis was simple, and remains so: that the best work happens when the lawyer doing the thinking is the lawyer in the room — and that clients in significant matters deserve direct access to senior counsel, not layered through a chain of associates.
                 </p>
                 <p>
                   We work in commercial law in its widest reading: mergers and acquisitions, private equity and venture capital, complex disputes, financial crime, banking and finance, and matters before the Supreme Court of India. Our clients are sponsors, founders, listed companies, banks, sovereign investors, and foreign counsel coming into India for the first time. Some of our best work goes unsigned and unmentioned, because the best resolutions are the ones that never reach a courtroom.
