@@ -1665,7 +1665,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
         `------------------------------------------------------------------------\n` +
         `4. NEXT STEPS FOR EXECUTION\n` +
         `------------------------------------------------------------------------\n` +
-        `- Email info@akvyre.com with your draft parameters.\n" +
+        `- Email info@akvyre.com with your draft parameters.\n` +
         `- Schedule a free detailed compliance consultation using our global floating\n` +
         `  calendar scheduler on our official website: https://www.akvyre.com\n\n` +
         `========================================================================\n` +
