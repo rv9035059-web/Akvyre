@@ -80,17 +80,18 @@ function Link({ to, className = "", children, ariaLabel, onClick, ...rest }) {
 function Wordmark({ size = 28, className = "" }) {
   return (
     <span
-      className={`font-display wordmark ${className}`}
+      className={`wordmark ${className}`}
       style={{
+        fontFamily: "'Cormorant Garamond', Georgia, serif",
         fontSize: size,
-        fontWeight: 300,
-        letterSpacing: "-0.035em",
+        fontWeight: 400,
+        letterSpacing: "-0.01em",
         lineHeight: 1,
         color: "var(--bone)",
         display: "inline-block",
       }}
     >
-      Ak<span className="k">v</span><span className="y">y</span>re
+      Akvyre<span style={{ color: "var(--amber)" }}>.</span>
     </span>
   );
 }
