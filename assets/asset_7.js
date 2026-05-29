@@ -1398,15 +1398,17 @@ function ComplianceChecklist({ title, subtitle, storageKey, sections, aboutTitle
     }
   });
 
-  const [expandedSections, setExpandedSections] = useState(() => {
-    const initial = {};
-    sections.forEach(s => {
-      initial[s.id] = true;
-    });
-    return initial;
-  });
-
+  const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id || "");
   const [showCompletedOnly, setShowCompletedOnly] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Totals
   const totalItems = sections.reduce((acc, s) => acc + s.items.length, 0);
@@ -1419,10 +1421,6 @@ function ComplianceChecklist({ title, subtitle, storageKey, sections, aboutTitle
     try {
       localStorage.setItem(storageKey, JSON.stringify(next));
     } catch (e) {}
-  };
-
-  const toggleSection = (id) => {
-    setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleReset = () => {
@@ -1667,7 +1665,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
         `------------------------------------------------------------------------\n` +
         `4. NEXT STEPS FOR EXECUTION\n` +
         `------------------------------------------------------------------------\n` +
-        `- Email info@akvyre.com with your draft parameters.\n` +
+        `- Email info@akvyre.com with your draft parameters.\n" +
         `- Schedule a free detailed compliance consultation using our global floating\n` +
         `  calendar scheduler on our official website: https://www.akvyre.com\n\n` +
         `========================================================================\n` +
@@ -1685,6 +1683,13 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
+
+  const activeSection = sections.find(s => s.id === activeSectionId) || sections[0];
+
+  const radius = 46;
+  const strokeWidth = 6;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (percentComplete / 100) * circumference;
 
   return (
     <PageShell>
@@ -1704,96 +1709,10 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
 
       <section className="pb-16 md:pb-24">
         <div className="max-w-shell mx-auto px-6 md:px-12">
-          {/* Progress and Controls Card */}
-          <div 
-            className="checklist-progress-card"
-            style={{
-              background: isLight ? "rgba(255, 255, 255, 0.65)" : "rgba(255, 255, 255, 0.015)",
-              border: "0.5px solid var(--hairline)",
-              borderRadius: "12px",
-              padding: "clamp(24px, 4vw, 48px)",
-              boxShadow: isLight ? "0 12px 30px rgba(30, 27, 22, 0.03)" : "0 12px 40px rgba(0,0,0,0.4)",
-              transition: "all 0.35s ease"
-            }}
-          >
-            {/* Progress Strip */}
-            <div>
-              <div className="flex justify-between items-center text-xs mono-label" style={{ color: "var(--bone-dim)" }}>
-                <span>Progress</span>
-                <span style={{ color: "var(--amber)" }}>{checkedCount} / {totalItems} items</span>
-              </div>
-              <div style={{ background: isLight ? "rgba(0,0,0,0.04)" : "rgba(255,255,255,0.04)", borderRadius: 999, height: "8px", marginTop: "10px", overflow: "hidden" }}>
-                <div className="checklist-progress-fill" style={{ background: "linear-gradient(90deg, var(--amber) 0%, #F5D77F 100%)", borderRadius: 999, height: "100%", width: `${percentComplete}%`, transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}></div>
-              </div>
-              <div className="mt-3 text-center" style={{ fontFamily: "var(--font-mono)", fontSize: "13px", color: "var(--bone)", transition: "color 0.35s ease" }}>
-                <span style={{ color: "var(--amber)", fontWeight: 500 }}>{percentComplete}%</span> Complete
-              </div>
-            </div>
-
-            {/* Action Controls */}
-            <div className="flex flex-wrap gap-3 mt-8 pt-6 justify-center md:justify-start" style={{ borderTop: "0.5px solid var(--hairline)" }}>
-              <button 
-                type="button"
-                onClick={() => setShowCompletedOnly(prev => !prev)}
-                style={{
-                  padding: "8px 16px",
-                  borderRadius: "999px",
-                  border: `0.5px solid ${showCompletedOnly ? "var(--amber)" : "var(--hairline)"}`,
-                  background: showCompletedOnly ? "rgba(212, 175, 55, 0.08)" : "transparent",
-                  color: showCompletedOnly ? "var(--amber)" : "var(--bone-dim)",
-                  fontSize: "12px",
-                  fontFamily: "var(--font-mono)",
-                  cursor: "pointer",
-                  transition: "all 0.2s"
-                }}
-              >
-                {showCompletedOnly ? "Show All Items" : "Show Completed Only"}
-              </button>
-              <button 
-                type="button"
-                onClick={handleExport}
-                style={{
-                  padding: "8px 16px",
-                  borderRadius: "999px",
-                  border: "0.5px solid var(--hairline)",
-                  background: "transparent",
-                  color: "var(--bone-dim)",
-                  fontSize: "12px",
-                  fontFamily: "var(--font-mono)",
-                  cursor: "pointer",
-                  transition: "all 0.2s"
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--amber)"; e.currentTarget.style.color = "var(--amber)"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
-              >
-                ↓ Export Progress Report
-              </button>
-              <button 
-                type="button"
-                onClick={handleReset}
-                style={{
-                  padding: "8px 16px",
-                  borderRadius: "999px",
-                  border: "0.5px solid var(--hairline)",
-                  background: "transparent",
-                  color: "var(--bone-dim)",
-                  fontSize: "12px",
-                  fontFamily: "var(--font-mono)",
-                  cursor: "pointer",
-                  transition: "all 0.2s"
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = "#fd5949"; e.currentTarget.style.color = "#fd5949"; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
-              >
-                ⟳ Reset Checklist
-              </button>
-            </div>
-          </div>
-
-          {/* Deadline alert banner */}
+          
           {deadlineText && (
             <div 
-              className="mt-6 flex items-start gap-3"
+              className="mb-8 flex items-start gap-3"
               style={{
                 background: isLight ? "rgba(197, 155, 39, 0.04)" : "rgba(212, 175, 55, 0.03)",
                 border: isLight ? "0.5px solid rgba(197, 155, 39, 0.25)" : "0.5px solid rgba(212, 175, 55, 0.2)",
@@ -1813,230 +1732,346 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
             </div>
           )}
 
-          {/* Accordion List */}
-          <div className="mt-12 space-y-6">
-            {sections.map(s => {
-              const sectionItems = s.items;
-              const completedInSection = sectionItems.filter(item => !!checkedItems[item.id]).length;
-              const isExpanded = !!expandedSections[s.id];
+          <div className="checklist-dashboard-grid">
+            
+            <div className="checklist-sidebar-col checklist-sidebar-sticky">
+              <div 
+                className="checklist-sidebar-card"
+                style={{
+                  background: isLight ? "rgba(255, 255, 255, 0.65)" : "rgba(255, 255, 255, 0.015)",
+                  border: "0.5px solid var(--hairline)",
+                  boxShadow: isLight ? "0 12px 30px rgba(30, 27, 22, 0.03)" : "0 12px 40px rgba(0,0,0,0.4)"
+                }}
+              >
+                
+                <div className="checklist-circular-progress-wrap">
+                  <svg className="checklist-circular-progress-svg" width="112" height="112">
+                    <circle 
+                      className="checklist-circular-progress-bg"
+                      cx="56" cy="56" r={radius} 
+                      strokeWidth={strokeWidth} 
+                    />
+                    <circle 
+                      className="checklist-circular-progress-bar"
+                      cx="56" cy="56" r={radius} 
+                      strokeWidth={strokeWidth}
+                      strokeDasharray={circumference}
+                      strokeDashoffset={strokeDashoffset}
+                    />
+                  </svg>
+                  <div className="checklist-circular-progress-text">
+                    <span className="checklist-circular-progress-pct">{percentComplete}%</span>
+                    <span className="checklist-circular-progress-label">COMPLIANT</span>
+                  </div>
+                </div>
 
-              // Filter if Show Completed active
-              const displayedItems = showCompletedOnly 
-                ? sectionItems.filter(item => !!checkedItems[item.id])
-                : sectionItems;
+                <div className="text-center mb-6">
+                  <div className="text-xs font-mono" style={{ color: "var(--bone-dim)" }}>
+                    <span style={{ color: "var(--amber)" }}>{checkedCount}</span> of {totalItems} items completed
+                  </div>
+                </div>
 
-              if (showCompletedOnly && displayedItems.length === 0) return null;
-
-              return (
-                <div 
-                  key={s.id}
-                  className="checklist-section-card"
-                  style={{
-                    background: isLight ? "rgba(255, 255, 255, 0.45)" : "rgba(255, 255, 255, 0.005)",
-                    border: "0.5px solid var(--hairline)",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    transition: "all 0.35s ease"
-                  }}
-                >
-                  {/* Category Header */}
-                  <div 
-                    onClick={() => toggleSection(s.id)}
-                    className="flex items-start md:items-center justify-between gap-4"
-                    style={{
-                      background: isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.015)",
-                      borderBottom: isExpanded ? "0.5px solid var(--hairline)" : "none",
-                      borderLeft: isExpanded ? "3px solid var(--amber)" : "3px solid transparent",
-                      padding: "20px 24px",
-                      cursor: "pointer",
-                      userSelect: "none",
-                      transition: "all 0.3s"
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.background = isLight ? "rgba(197, 155, 39, 0.05)" : "rgba(212, 175, 55, 0.03)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.015)"; }}
-                  >
-                    <div className="flex items-start md:items-center gap-4 flex-1">
-                      {s.index && (
-                        <div 
-                          style={{
-                            width: "36px",
-                            height: "36px",
-                            borderRadius: "50%",
-                            background: isLight ? "rgba(0, 0, 0, 0.03)" : "rgba(255, 255, 255, 0.05)",
-                            border: "0.5px solid var(--hairline)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            color: "var(--bone)",
-                            fontFamily: "var(--font-mono)",
-                            fontSize: "14px",
-                            fontWeight: "bold",
-                            flexShrink: 0,
-                            marginTop: "2px",
-                            transition: "all 0.35s ease"
-                          }}
+                {!isMobile && (
+                  <div className="checklist-tabs-list mb-6 pt-6" style={{ borderTop: "0.5px solid var(--hairline)" }}>
+                    <span className="text-[10px] uppercase font-mono tracking-[0.15em] mb-2 pl-2" style={{ color: "var(--bone-dim)" }}>
+                      Checklist Categories
+                    </span>
+                    {sections.map(s => {
+                      const isActive = s.id === activeSectionId;
+                      return (
+                        <button
+                          key={s.id}
+                          type="button"
+                          onClick={() => setActiveSectionId(s.id)}
+                          className={`checklist-tab-item ${isActive ? "active" : ""}`}
                         >
-                          {s.index}
-                        </div>
-                      )}
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 flex-wrap">
-                          <h3 className="font-display text-lg md:text-xl" style={{ fontWeight: 300, color: "var(--bone)", letterSpacing: "-0.01em", margin: 0, transition: "color 0.35s ease" }}>
-                            {s.title}
-                          </h3>
-                          {s.badge && (() => {
-                            const styles = getBadgeStyles(s.badge);
-                            return (
-                              <span 
-                                style={{
-                                  background: styles.bg,
-                                  border: styles.border,
-                                  color: styles.color,
-                                  borderRadius: "999px",
-                                  padding: "2px 8px",
-                                  fontSize: "10px",
-                                  fontWeight: 500,
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.05em",
-                                  fontFamily: "var(--font-mono)"
-                                }}
-                              >
-                                {s.badge}
-                              </span>
-                            );
-                          })()}
-                        </div>
-                        {s.subtitle && (
-                          <div className="mt-1" style={{ color: "var(--bone-dim)", fontSize: "13px", fontWeight: 300, transition: "color 0.35s ease" }}>
-                            {s.subtitle}
+                          <span className="checklist-tab-num">{s.index || "•"}</span>
+                          <span className="checklist-tab-title">{s.title}</span>
+                          <span className="checklist-tab-dot"></span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                <div className="flex flex-col gap-2 pt-6" style={{ borderTop: "0.5px solid var(--hairline)" }}>
+                  <button 
+                    type="button"
+                    onClick={() => setShowCompletedOnly(prev => !prev)}
+                    style={{
+                      width: "100%",
+                      padding: "10px 16px",
+                      borderRadius: "6px",
+                      border: `0.5px solid ${showCompletedOnly ? "var(--amber)" : "var(--hairline)"}`,
+                      background: showCompletedOnly ? "rgba(212, 175, 55, 0.08)" : "transparent",
+                      color: showCompletedOnly ? "var(--amber)" : "var(--bone-dim)",
+                      fontSize: "12px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                      textAlign: "center",
+                      transition: "all 0.2s"
+                    }}
+                  >
+                    {showCompletedOnly ? "Show All Items" : "Show Completed Only"}
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={handleExport}
+                    style={{
+                      width: "100%",
+                      padding: "10px 16px",
+                      borderRadius: "6px",
+                      border: "0.5px solid var(--hairline)",
+                      background: "transparent",
+                      color: "var(--bone-dim)",
+                      fontSize: "12px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                      textAlign: "center",
+                      transition: "all 0.2s"
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--amber)"; e.currentTarget.style.color = "var(--amber)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
+                  >
+                    ↓ Export Progress Report
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={handleReset}
+                    style={{
+                      width: "100%",
+                      padding: "10px 16px",
+                      borderRadius: "6px",
+                      border: "0.5px solid var(--hairline)",
+                      background: "transparent",
+                      color: "var(--bone-dim)",
+                      fontSize: "12px",
+                      fontFamily: "var(--font-mono)",
+                      cursor: "pointer",
+                      textAlign: "center",
+                      transition: "all 0.2s"
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = "#fd5949"; e.currentTarget.style.color = "#fd5949"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
+                  >
+                    ⟳ Reset Checklist
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <div className="checklist-content-col">
+              
+              {isMobile && (
+                <div className="checklist-horizontal-scroll">
+                  {sections.map(s => {
+                    const isActive = s.id === activeSectionId;
+                    return (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => setActiveSectionId(s.id)}
+                        className={`checklist-mobile-tab ${isActive ? "active" : ""}`}
+                      >
+                        <span>{s.index || ""}</span>
+                        <span>{s.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {activeSection && (() => {
+                const sectionItems = activeSection.items;
+                const completedInSection = sectionItems.filter(item => !!checkedItems[item.id]).length;
+                
+                const displayedItems = showCompletedOnly 
+                  ? sectionItems.filter(item => !!checkedItems[item.id])
+                  : sectionItems;
+
+                return (
+                  <div 
+                    className="checklist-section-card"
+                    style={{
+                      background: isLight ? "rgba(255, 255, 255, 0.45)" : "rgba(255, 255, 255, 0.005)",
+                      border: "0.5px solid var(--hairline)",
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      transition: "all 0.35s ease"
+                    }}
+                  >
+                    
+                    <div 
+                      style={{
+                        background: isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.015)",
+                        borderBottom: "0.5px solid var(--hairline)",
+                        padding: "24px 28px",
+                        borderLeft: "3px solid var(--amber)"
+                      }}
+                    >
+                      <div className="flex items-start md:items-center justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <span className="font-mono text-xs text-[var(--amber)] tracking-wider">
+                              CATEGORY {activeSection.index || "•"}
+                            </span>
+                            {activeSection.badge && (() => {
+                              const styles = getBadgeStyles(activeSection.badge);
+                              return (
+                                <span 
+                                  style={{
+                                    background: styles.bg,
+                                    border: styles.border,
+                                    color: styles.color,
+                                    borderRadius: "999px",
+                                    padding: "2px 8px",
+                                    fontSize: "10px",
+                                    fontWeight: 500,
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.05em",
+                                    fontFamily: "var(--font-mono)"
+                                  }}
+                                >
+                                  {activeSection.badge}
+                                </span>
+                              );
+                            })()}
                           </div>
-                        )}
-                        <div className="mt-2 text-xs mono-label" style={{ color: "var(--bone-dim)", transition: "color 0.35s ease" }}>
-                          {completedInSection} / {sectionItems.length} items completed · {Math.round((completedInSection/sectionItems.length)*100)}%
+                          <h3 
+                            className="font-display text-xl md:text-2xl mt-1 mb-2" 
+                            style={{ fontWeight: 300, color: "var(--bone)", letterSpacing: "-0.01em", transition: "color 0.35s ease" }}
+                          >
+                            {activeSection.title}
+                          </h3>
+                          {activeSection.subtitle && (
+                            <div className="mt-1" style={{ color: "var(--bone-dim)", fontSize: "14px", fontWeight: 300, transition: "color 0.35s ease" }}>
+                              {activeSection.subtitle}
+                            </div>
+                          )}
+                          <div className="mt-3 text-xs mono-label" style={{ color: "var(--bone-dim)", transition: "color 0.35s ease" }}>
+                            {completedInSection} / {sectionItems.length} items completed · {Math.round((completedInSection/sectionItems.length)*100)}% Complete
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div style={{ color: "var(--amber)", transition: "transform 0.3s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)", marginTop: "8px" }}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </div>
-                  </div>
 
-                  {/* Category Items */}
-                  {isExpanded && (
-                    <div className="p-6 space-y-4">
-                      {displayedItems.map(item => {
-                        const isChecked = !!checkedItems[item.id];
-                        return (
-                          <div 
-                            key={item.id}
-                            className="checklist-item-card"
-                            style={{
-                              background: isChecked 
-                                ? (isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.01)") 
-                                : (isLight ? "rgba(255, 255, 255, 0.25)" : "rgba(255, 255, 255, 0.005)"),
-                              border: `0.5px solid ${isChecked ? "rgba(212, 175, 55, 0.3)" : "var(--hairline)"}`,
-                              borderRadius: "8px",
-                              padding: "20px 24px",
-                              transition: "all 0.2s"
-                            }}
-                          >
-                            <div className="flex items-start gap-4">
-                              {/* Circle Checkbox */}
-                              <div 
-                                onClick={() => toggleItem(item.id)}
-                                className="checklist-checkbox-circle"
-                                style={{
-                                  width: "24px",
-                                  height: "24px",
-                                  borderRadius: "50%",
-                                  border: `1.5px solid ${isChecked ? "var(--amber)" : "var(--hairline)"}`,
-                                  background: isChecked ? "var(--amber)" : "transparent",
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  color: "var(--ink)",
-                                  cursor: "pointer",
-                                  flexShrink: 0,
-                                  marginTop: "2px",
-                                  transition: "all 0.2s"
-                                }}
-                              >
-                                {isChecked && (
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                  </svg>
-                                )}
-                              </div>
-                              
-                              {/* Details */}
-                              <div className="flex-1">
-                                <h4 
+                    <div className="p-6 md:p-8 space-y-4">
+                      {displayedItems.length === 0 ? (
+                        <div className="text-center py-8 text-sm" style={{ color: "var(--bone-dim)" }}>
+                          No completed items in this category.
+                        </div>
+                      ) : (
+                        displayedItems.map(item => {
+                          const isChecked = !!checkedItems[item.id];
+                          return (
+                            <div 
+                              key={item.id}
+                              className="checklist-item-card"
+                              style={{
+                                background: isChecked 
+                                  ? (isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.01)") 
+                                  : (isLight ? "rgba(255, 255, 255, 0.25)" : "rgba(255, 255, 255, 0.005)"),
+                                border: `0.5px solid ${isChecked ? "rgba(212, 175, 55, 0.3)" : "var(--hairline)"}`,
+                                borderRadius: "8px",
+                                padding: "20px 24px",
+                                transition: "all 0.2s"
+                              }}
+                            >
+                              <div className="flex items-start gap-4">
+                                <div 
                                   onClick={() => toggleItem(item.id)}
-                                  className="font-sans" 
-                                  style={{ 
-                                    fontSize: "16px", 
-                                    fontWeight: 300, 
-                                    color: isChecked ? "var(--bone-dim)" : "var(--bone)", 
+                                  className="checklist-checkbox-circle"
+                                  style={{
+                                    width: "24px",
+                                    height: "24px",
+                                    borderRadius: "50%",
+                                    border: `1.5px solid ${isChecked ? "var(--amber)" : "var(--hairline)"}`,
+                                    background: isChecked ? "var(--amber)" : "transparent",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    color: "var(--ink)",
                                     cursor: "pointer",
-                                    textDecoration: isChecked ? "line-through" : "none",
-                                    opacity: isChecked ? 0.75 : 1,
+                                    flexShrink: 0,
+                                    marginTop: "2px",
                                     transition: "all 0.2s"
                                   }}
                                 >
-                                  {item.title}
-                                </h4>
+                                  {isChecked && (
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                                      <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                  )}
+                                </div>
                                 
-                                {item.req && (
-                                  <div 
-                                    className="font-display mt-3 text-xs" 
+                                <div className="flex-1">
+                                  <h4 
+                                    onClick={() => toggleItem(item.id)}
+                                    className="font-sans" 
                                     style={{ 
-                                      background: isLight ? "rgba(197, 155, 39, 0.04)" : "rgba(212, 175, 55, 0.04)", 
-                                      border: isLight ? "0.5px solid rgba(197, 155, 39, 0.2)" : "0.5px solid rgba(212, 175, 55, 0.2)", 
-                                      borderRadius: "6px", 
-                                      padding: "10px 14px",
-                                      color: "var(--bone-dim)",
-                                      fontWeight: 300,
-                                      lineHeight: 1.45,
-                                      transition: "all 0.35s ease"
+                                      fontSize: "16px", 
+                                      fontWeight: 300, 
+                                      color: isChecked ? "var(--bone-dim)" : "var(--bone)", 
+                                      cursor: "pointer",
+                                      textDecoration: isChecked ? "line-through" : "none",
+                                      opacity: isChecked ? 0.75 : 1,
+                                      transition: "all 0.2s"
                                     }}
                                   >
-                                    <span style={{ color: "var(--amber)", fontWeight: 500, fontFamily: "var(--font-mono)" }}>Requirements: </span>
-                                    {item.req}
-                                  </div>
-                                )}
-
-                                {/* Action button inside checklist item */}
-                                {storageKey !== "akvyr.checklist.agritech" && (
-                                  <div className="mt-3 flex gap-2">
-                                    <button
-                                      type="button"
-                                      onClick={() => handleDownloadSample(item.title)}
-                                      style={{
-                                        background: "transparent",
-                                        border: "0.5px solid var(--hairline)",
-                                        borderRadius: "4px",
-                                        padding: "4px 10px",
-                                        fontSize: "11px",
+                                    {item.title}
+                                  </h4>
+                                  
+                                  {item.req && (
+                                    <div 
+                                      className="font-display mt-3 text-xs" 
+                                      style={{ 
+                                        background: isLight ? "rgba(197, 155, 39, 0.04)" : "rgba(212, 175, 55, 0.04)", 
+                                        border: isLight ? "0.5px solid rgba(197, 155, 39, 0.2)" : "0.5px solid rgba(212, 175, 55, 0.2)", 
+                                        borderRadius: "6px", 
+                                        padding: "10px 14px",
                                         color: "var(--bone-dim)",
-                                        cursor: "pointer",
-                                        transition: "all 0.2s",
-                                        fontFamily: "var(--font-mono)"
+                                        fontWeight: 300,
+                                        lineHeight: 1.45,
+                                        transition: "all 0.35s ease"
                                       }}
-                                      onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--amber)"; e.currentTarget.style.color = "var(--amber)"; }}
-                                      onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
                                     >
-                                      ↓ Download Draft Template
-                                    </button>
-                                  </div>
-                                )}
+                                      <span style={{ color: "var(--amber)", fontWeight: 500, fontFamily: "var(--font-mono)" }}>Requirements: </span>
+                                      {item.req}
+                                    </div>
+                                  )}
+
+                                  {storageKey !== "akvyr.checklist.agritech" && (
+                                    <div className="mt-3 flex gap-2">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleDownloadSample(item.title)}
+                                        style={{
+                                          background: "transparent",
+                                          border: "0.5px solid var(--hairline)",
+                                          borderRadius: "4px",
+                                          padding: "4px 10px",
+                                          fontSize: "11px",
+                                          color: "var(--bone-dim)",
+                                          cursor: "pointer",
+                                          transition: "all 0.2s",
+                                          fontFamily: "var(--font-mono)"
+                                        }}
+                                        onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--amber)"; e.currentTarget.style.color = "var(--amber)"; }}
+                                        onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
+                                      >
+                                        ↓ Download Draft Template
+                                      </button>
+                                    </div>
+                                  )}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                      {s.bestPractice && (
+                          );
+                        })
+                      )}
+                      
+                      {activeSection.bestPractice && (
                         <div 
                           className="mt-6 text-sm" 
                           style={{ 
@@ -2052,70 +2087,72 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
                           }}
                         >
                           <span style={{ color: "var(--amber)", fontWeight: 500 }}>💡 Best Practice: </span>
-                          {s.bestPractice}
+                          {activeSection.bestPractice}
                         </div>
                       )}
+
                     </div>
-                  )}
+                  </div>
+                );
+              })()}
+
+              {percentComplete === 100 && (
+                <div 
+                  className="mt-8 text-center"
+                  style={{
+                    background: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
+                    borderRadius: "16px",
+                    padding: "clamp(24px, 5vw, 40px) clamp(16px, 4vw, 24px)",
+                    boxShadow: "0 12px 30px rgba(5, 150, 105, 0.2)",
+                    color: "#ffffff"
+                  }}
+                >
+                  <div 
+                    style={{
+                      width: "48px",
+                      height: "48px",
+                      background: "#ffffff",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      margin: "0 auto 20px",
+                      boxShadow: "0 4px 10px rgba(0,0,0,0.15)"
+                    }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  
+                  <h2 className="font-display text-2xl md:text-3xl mb-4" style={{ fontWeight: 600, color: "#ffffff", fontSize: "clamp(20px, 4vw, 28px)", letterSpacing: "-0.01em" }}>
+                    Congratulations! 🎉
+                  </h2>
+                  
+                  <p className="font-sans mb-2" style={{ fontSize: "clamp(14px, 2.5vw, 16px)", fontWeight: 400, opacity: 0.95, lineHeight: 1.5 }}>
+                    {storageKey.includes("agritech") 
+                      ? "You've completed all legal documentation requirements for your Agritech startup!"
+                      : "You've completed all legal documentation requirements for your PoSH compliance!"
+                    }
+                  </p>
+                  
+                  <p className="font-sans" style={{ fontSize: "clamp(12px, 2vw, 14px)", fontWeight: 300, opacity: 0.85, lineHeight: 1.5 }}>
+                    {storageKey.includes("agritech")
+                      ? "Your startup is now legally prepared for growth and investment opportunities."
+                      : "Your organization is now legally prepared for audits and statutory filings."
+                    }
+                  </p>
                 </div>
-              );
-            })}
-          </div>
+              )}
 
-          {/* 100% Completion Success Banner */}
-          {percentComplete === 100 && (
-            <div 
-              className="mt-8 md:mt-12 text-center"
-              style={{
-                background: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
-                borderRadius: "16px",
-                padding: "clamp(24px, 5vw, 40px) clamp(16px, 4vw, 24px)",
-                boxShadow: "0 12px 30px rgba(5, 150, 105, 0.2)",
-                color: "#ffffff"
-              }}
-            >
-              <div 
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  background: "#ffffff",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "0 auto 20px",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.15)"
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+              <div className="mt-12 text-center text-xs" style={{ color: "var(--bone-dim)", fontWeight: 300, fontStyle: "italic", borderTop: "0.5px solid var(--hairline)", paddingTop: "24px", transition: "all 0.35s ease" }}>
+                Remember to consult with legal professionals for specific requirements in your jurisdiction.
               </div>
-              
-              <h2 className="font-display text-2xl md:text-3xl mb-4" style={{ fontWeight: 600, color: "#ffffff", fontSize: "clamp(20px, 4vw, 28px)", letterSpacing: "-0.01em" }}>
-                Congratulations! 🎉
-              </h2>
-              
-              <p className="font-sans mb-2" style={{ fontSize: "clamp(14px, 2.5vw, 16px)", fontWeight: 400, opacity: 0.95, lineHeight: 1.5 }}>
-                {storageKey.includes("agritech") 
-                  ? "You've completed all legal documentation requirements for your Agritech startup!"
-                  : "You've completed all legal documentation requirements for your PoSH compliance!"
-                }
-              </p>
-              
-              <p className="font-sans" style={{ fontSize: "clamp(12px, 2vw, 14px)", fontWeight: 300, opacity: 0.85, lineHeight: 1.5 }}>
-                {storageKey.includes("agritech")
-                  ? "Your startup is now legally prepared for growth and investment opportunities."
-                  : "Your organization is now legally prepared for audits and statutory filings."
-                }
-              </p>
-            </div>
-          )}
 
-          {/* Legal fineprint notice */}
-          <div className="mt-12 text-center text-xs" style={{ color: "var(--bone-dim)", fontWeight: 300, fontStyle: "italic", borderTop: "0.5px solid var(--hairline)", paddingTop: "24px", transition: "all 0.35s ease" }}>
-            Remember to consult with legal professionals for specific requirements in your jurisdiction.
+            </div>
+
           </div>
+
         </div>
       </section>
     </PageShell>
