@@ -58,7 +58,7 @@ const BLOG_POSTS = [
     category: "AI Governance & Employment Law",
     title: "The Legal Risks of AI at Work: How to Draft an Acceptable Use Policy",
     dek: "By the time you finish reading this article, it is highly probable that an employee within your organization has pasted sensitive company data into a public generative AI tool.",
-    author: "Vayu Goyal",
+    author: "Vaayu Goyal",
     readingTime: "5 min",
     image: "assets/blog_shadow_ai.jpg?v=1.1.2",
     body: [
