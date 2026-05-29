@@ -155,9 +155,9 @@ function ManifestoTypo() {
       ref={ref}
       className="font-display italic max-w-5xl"
       style={{
-        fontSize: "clamp(30px, 4.2vw, 62px)",
+        fontSize: "clamp(26px, 3.4vw, 42px)",
         fontWeight: 300,
-        lineHeight: 1.35,
+        lineHeight: 1.4,
         letterSpacing: "-0.015em",
         marginRight: "-0.28em", // compensate last word trailing margin
       }}
