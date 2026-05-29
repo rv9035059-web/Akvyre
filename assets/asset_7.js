@@ -2003,27 +2003,29 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
                                 )}
 
                                 {/* Action button inside checklist item */}
-                                <div className="mt-3 flex gap-2">
-                                  <button
-                                    type="button"
-                                    onClick={() => handleDownloadSample(item.title)}
-                                    style={{
-                                      background: "transparent",
-                                      border: "0.5px solid var(--hairline)",
-                                      borderRadius: "4px",
-                                      padding: "4px 10px",
-                                      fontSize: "11px",
-                                      color: "var(--bone-dim)",
-                                      cursor: "pointer",
-                                      transition: "all 0.2s",
-                                      fontFamily: "var(--font-mono)"
-                                    }}
-                                    onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--amber)"; e.currentTarget.style.color = "var(--amber)"; }}
-                                    onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
-                                  >
-                                    ↓ Download Draft Template
-                                  </button>
-                                </div>
+                                {storageKey !== "akvyr.checklist.agritech" && (
+                                  <div className="mt-3 flex gap-2">
+                                    <button
+                                      type="button"
+                                      onClick={() => handleDownloadSample(item.title)}
+                                      style={{
+                                        background: "transparent",
+                                        border: "0.5px solid var(--hairline)",
+                                        borderRadius: "4px",
+                                        padding: "4px 10px",
+                                        fontSize: "11px",
+                                        color: "var(--bone-dim)",
+                                        cursor: "pointer",
+                                        transition: "all 0.2s",
+                                        fontFamily: "var(--font-mono)"
+                                      }}
+                                      onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--amber)"; e.currentTarget.style.color = "var(--amber)"; }}
+                                      onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--hairline)"; e.currentTarget.style.color = "var(--bone-dim)"; }}
+                                    >
+                                      ↓ Download Draft Template
+                                    </button>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>
