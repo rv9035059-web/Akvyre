@@ -548,7 +548,7 @@ function HomePage() {
             <Reveal delay={60}>
               <p
                 className="font-display max-w-lg md:text-right"
-                style={{ fontSize: "clamp(18px, 1.8vw, 24px)", fontWeight: 300, lineHeight: 1.4, letterSpacing: "-0.01em", color: "var(--bone-dim)" }}
+                style={{ fontSize: "clamp(15px, 1.8vw, 22px)", fontWeight: 300, lineHeight: 1.4, letterSpacing: "-0.01em", color: "var(--bone-dim)" }}
               >
                 Translating shifting global regulations and compliance architectures into <span style={{ color: "var(--amber)", fontStyle: "italic" }}>strategic corporate briefs.</span>
               </p>
