@@ -1,0 +1,20 @@
+{
+  "name": "akvyre",
+  "version": "1.0.0",
+  "description": "Akvyre - Premier law firm based in Delhi and Haryana",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build step required'"
+  },
+  "keywords": [
+    "law-firm",
+    "legal-services",
+    "akvyre"
+  ],
+  "author": "Akvyre — Law Sellential Solutions LLP",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
