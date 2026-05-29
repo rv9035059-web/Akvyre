@@ -169,6 +169,92 @@ function ManifestoTypo() {
   );
 }
 
+function ReviewCarousel() {
+  const reviews = [
+    {
+      quote: "Akvyre guided us through our Series A round with exceptional clarity. Having partner-level counsel in every negotiation was our single biggest commercial advantage.",
+      author: "Srinivasan K.",
+      role: "Founder, Fintech Platform"
+    },
+    {
+      quote: "Vaayu Goyal's deep expertise in compliance helped us navigate complex regulatory hurdles effortlessly. Their plain English approach is incredibly refreshing.",
+      author: "Elena R.",
+      role: "General Counsel, AgriTech Group"
+    },
+    {
+      quote: "In a highly complex shareholder dispute, Akshay Tyagi's strategy delivered a swift resolution before it reached the courtroom. Responsive, prompt, and precise.",
+      author: "Rajiv Malhotra",
+      role: "Director, Manufacturing Conglomerate"
+    }
+  ];
+
+  const [active, setActive] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % reviews.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative max-w-4xl mx-auto text-center pt-8 pb-12 overflow-hidden" style={{ minHeight: 220 }}>
+      <div className="absolute inset-0 flex items-center justify-center">
+        {reviews.map((r, i) => (
+          <div
+            key={i}
+            className="transition-all duration-700 absolute inset-0 flex flex-col justify-center items-center px-4"
+            style={{
+              opacity: active === i ? 1 : 0,
+              transform: active === i ? "translateY(0) scale(1)" : "translateY(15px) scale(0.95)",
+              pointerEvents: active === i ? "auto" : "none",
+              width: "100%",
+            }}
+          >
+            <p
+              className="font-display italic"
+              style={{
+                fontSize: "clamp(20px, 2.2vw, 26px)",
+                lineHeight: 1.45,
+                color: "var(--bone)",
+                fontWeight: 300,
+              }}
+            >
+              "{r.quote}"
+            </p>
+            <div className="mt-5 flex items-center gap-3 justify-center">
+              <span className="mono-label" style={{ color: "var(--amber)" }}>{r.author}</span>
+              <span style={{ color: "var(--bone-dim)", fontSize: 13, fontWeight: 300 }}>·</span>
+              <span className="mono-label" style={{ color: "var(--bone-dim)", textTransform: "none", fontSize: 12 }}>{r.role}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation dots */}
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-3 z-10">
+        {reviews.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            style={{
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              backgroundColor: active === i ? "var(--amber)" : "var(--hairline)",
+              border: 0,
+              cursor: "pointer",
+              padding: 0,
+              transition: "background-color 0.3s ease",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   return (
     <PageShell>
@@ -562,6 +648,12 @@ function HomePage() {
               </div>
             </div>
           </div>
+
+          <hr className="hairline" />
+
+          <Reveal delay={100}>
+            <ReviewCarousel />
+          </Reveal>
         </div>
       </section>
     </PageShell>
