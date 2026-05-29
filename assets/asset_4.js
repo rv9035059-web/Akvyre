@@ -618,7 +618,7 @@ function HomePage() {
       <section className="py-20 md:py-28">
         <div className="max-w-shell mx-auto px-6 md:px-12">
           <Reveal>
-            <SectionLabel className="mb-20">Manifesto</SectionLabel>
+            <SectionLabel className="mb-8 md:mb-20">Manifesto</SectionLabel>
           </Reveal>
           <ManifestoTypo />
         </div>
@@ -635,7 +635,7 @@ function HomePage() {
                 <p 
                   className="font-display max-w-4xl" 
                   style={{ 
-                    fontSize: "clamp(20px, 1.8vw, 28px)", 
+                    fontSize: "clamp(18px, 1.8vw, 26px)", 
                     fontWeight: 300, 
                     lineHeight: 1.4, 
                     letterSpacing: "-0.01em",
