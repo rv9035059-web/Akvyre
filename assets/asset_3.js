@@ -806,7 +806,7 @@ function HeroBlock({ eyebrow, headline, sub, ambient = false, italicWord = null,
         />
       )}
 
-      <div className={`max-w-shell mx-auto px-6 md:px-12 relative z-10 pt-32 md:pt-40 ${ambient ? "pb-36 md:pb-48" : "pb-16 md:pb-24"}`}>
+      <div className={`max-w-shell mx-auto px-6 md:px-12 relative z-10 ${ambient ? "pt-32 md:pt-40 pb-36 md:pb-48" : "pt-24 md:pt-28 pb-8 md:pb-12"}`}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Headline and Call-to-actions */}
