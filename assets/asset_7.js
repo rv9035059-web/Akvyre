@@ -1706,6 +1706,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
         <div className="max-w-shell mx-auto px-6 md:px-12">
           {/* Progress and Controls Card */}
           <div 
+            className="checklist-progress-card"
             style={{
               background: isLight ? "rgba(255, 255, 255, 0.65)" : "rgba(255, 255, 255, 0.015)",
               border: "0.5px solid var(--hairline)",
@@ -1722,7 +1723,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
                 <span style={{ color: "var(--amber)" }}>{checkedCount} / {totalItems} items</span>
               </div>
               <div style={{ background: isLight ? "rgba(0,0,0,0.04)" : "rgba(255,255,255,0.04)", borderRadius: 999, height: "8px", marginTop: "10px", overflow: "hidden" }}>
-                <div style={{ background: "linear-gradient(90deg, var(--amber) 0%, #F5D77F 100%)", borderRadius: 999, height: "100%", width: `${percentComplete}%`, transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}></div>
+                <div className="checklist-progress-fill" style={{ background: "linear-gradient(90deg, var(--amber) 0%, #F5D77F 100%)", borderRadius: 999, height: "100%", width: `${percentComplete}%`, transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}></div>
               </div>
               <div className="mt-3 text-center" style={{ fontFamily: "var(--font-mono)", fontSize: "13px", color: "var(--bone)", transition: "color 0.35s ease" }}>
                 <span style={{ color: "var(--amber)", fontWeight: 500 }}>{percentComplete}%</span> Complete
@@ -1829,6 +1830,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
               return (
                 <div 
                   key={s.id}
+                  className="checklist-section-card"
                   style={{
                     background: isLight ? "rgba(255, 255, 255, 0.45)" : "rgba(255, 255, 255, 0.005)",
                     border: "0.5px solid var(--hairline)",
@@ -1844,10 +1846,11 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
                     style={{
                       background: isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.015)",
                       borderBottom: isExpanded ? "0.5px solid var(--hairline)" : "none",
+                      borderLeft: isExpanded ? "3px solid var(--amber)" : "3px solid transparent",
                       padding: "20px 24px",
                       cursor: "pointer",
                       userSelect: "none",
-                      transition: "background 0.2s"
+                      transition: "all 0.3s"
                     }}
                     onMouseEnter={e => { e.currentTarget.style.background = isLight ? "rgba(197, 155, 39, 0.05)" : "rgba(212, 175, 55, 0.03)"; }}
                     onMouseLeave={e => { e.currentTarget.style.background = isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.015)"; }}
@@ -1928,6 +1931,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
                         return (
                           <div 
                             key={item.id}
+                            className="checklist-item-card"
                             style={{
                               background: isChecked 
                                 ? (isLight ? "rgba(197, 155, 39, 0.02)" : "rgba(212, 175, 55, 0.01)") 
@@ -1942,6 +1946,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
                               {/* Circle Checkbox */}
                               <div 
                                 onClick={() => toggleItem(item.id)}
+                                className="checklist-checkbox-circle"
                                 style={{
                                   width: "24px",
                                   height: "24px",
