@@ -189,6 +189,14 @@ function ReviewCarousel() {
   ];
 
   const [active, setActive] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -198,7 +206,7 @@ function ReviewCarousel() {
   }, []);
 
   return (
-    <div className="relative max-w-4xl mx-auto text-center pt-8 pb-12 overflow-hidden" style={{ minHeight: 220 }}>
+    <div className="relative max-w-4xl mx-auto text-center pt-8 pb-12 overflow-hidden animate-fade-in" style={{ minHeight: isMobile ? 280 : 180 }}>
       <div className="absolute inset-0 flex items-center justify-center">
         {reviews.map((r, i) => (
           <div
@@ -214,7 +222,7 @@ function ReviewCarousel() {
             <p
               className="font-display italic"
               style={{
-                fontSize: "clamp(20px, 2.2vw, 26px)",
+                fontSize: "clamp(17px, 2.2vw, 26px)",
                 lineHeight: 1.45,
                 color: "var(--bone)",
                 fontWeight: 300,
@@ -222,9 +230,9 @@ function ReviewCarousel() {
             >
               "{r.quote}"
             </p>
-            <div className="mt-5 flex items-center gap-3 justify-center">
+            <div className="mt-5 flex flex-col md:flex-row items-center gap-1 md:gap-3 justify-center">
               <span className="mono-label" style={{ color: "var(--amber)" }}>{r.author}</span>
-              <span style={{ color: "var(--bone-dim)", fontSize: 13, fontWeight: 300 }}>·</span>
+              <span className="hidden md:inline" style={{ color: "var(--bone-dim)", fontSize: 13, fontWeight: 300 }}>·</span>
               <span className="mono-label" style={{ color: "var(--bone-dim)", textTransform: "none", fontSize: 12 }}>{r.role}</span>
             </div>
           </div>
