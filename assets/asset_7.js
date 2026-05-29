@@ -1646,7 +1646,7 @@ Failure to report or comply is subject to legal action under the POSH Act, 2013.
         `  leading to mediation, and finalized via binding arbitration in New Delhi under the\n` +
         `  Arbitration and Conciliation Act.\n\n` +
         `------------------------------------------------------------------------\n` +
-        `3. TAILORED SECTORAL ADVISORY\n" +
+        `3. TAILORED SECTORAL ADVISORY\n` +
         `------------------------------------------------------------------------\n` +
         `Startups, Agritech firms, and corporate employers in India must ensure all\n` +
         `covenants comply fully with standard commercial codes, FSSAI regulations,\n` +
