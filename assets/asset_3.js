@@ -84,15 +84,14 @@ function Wordmark({ size = 28, className = "" }) {
       style={{
         fontFamily: "'Cormorant Garamond', Georgia, serif",
         fontSize: size,
-        fontStyle: "italic",
-        fontWeight: 500,
-        letterSpacing: "0.005em",
-        lineHeight: 0.96,
+        fontWeight: 400,
+        letterSpacing: "-0.01em",
+        lineHeight: 1,
         color: "var(--bone)",
         display: "inline-block",
       }}
     >
-      A<span className="k">k</span>v<span className="y">y</span>re<span style={{ color: "var(--amber)" }}>.</span>
+      Akvyre<span style={{ color: "var(--amber)" }}>.</span>
     </span>
   );
 }
