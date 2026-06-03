@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Akvyre Legal LLP — Social Media Brand Kit & Templates</title>
 
+<!-- Error Diagnostic Script -->
+<script>
+  window.addEventListener('error', function(e) {
+    const errorBox = document.getElementById('error-display') || document.createElement('div');
+    errorBox.id = 'error-display';
+    errorBox.style.position = 'fixed';
+    errorBox.style.inset = '0';
+    errorBox.style.background = '#2a1a1a';
+    errorBox.style.color = '#ff9999';
+    errorBox.style.padding = '40px';
+    errorBox.style.fontFamily = 'monospace';
+    errorBox.style.fontSize = '14px';
+    errorBox.style.overflow = 'auto';
+    errorBox.style.zIndex = '99999';
+    const msg = e.error ? (e.error.stack || e.error.message) : (e.message || 'Resource loading error / Script failed');
+    errorBox.innerHTML = '<h2>Error Detected:</h2><pre>' + msg + '</pre>';
+    document.body.appendChild(errorBox);
+  }, true);
+</script>
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
