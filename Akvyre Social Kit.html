@@ -1,0 +1,1509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Akvyre Legal LLP — Social Media Brand Kit & Templates</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink:        #0A0A0B;
+    --ink-soft:   #121110;
+    --bone:       #EAE5DC;
+    --bone-dim:   #A19C93;
+    --amber:      #D4AF37;
+    --amber-bright:#E6C25B;
+    --amber-deep: #9A7B1E;
+    --muted:      #6E6A63;
+    --hairline:   rgba(212,175,55,0.2);
+    --hairline-ft: rgba(212,175,55,0.08);
+    --card-bg:    rgba(18,17,16,0.7);
+    --border-radius: 4px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #0d0c0b;
+    color: var(--bone);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+  }
+
+  #root {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* --- Dashboard Layout --- */
+  .sidebar {
+    width: 320px;
+    background: #080809;
+    border-right: 1px solid var(--hairline-ft);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  .sidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--hairline-ft);
+  }
+
+  .sidebar-logo {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--bone);
+    margin-bottom: 4px;
+  }
+  .sidebar-logo span { color: var(--amber); }
+
+  .sidebar-tag {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0; padding: 16px 8px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-group-title {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 16px 6px;
+  }
+
+  .nav-item {
+    padding: 10px 16px;
+    font-size: 13.5px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    color: var(--bone-dim);
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-item:hover {
+    background: rgba(234, 229, 220, 0.03);
+    color: var(--bone);
+  }
+
+  .nav-item.active {
+    background: rgba(212, 175, 55, 0.08);
+    border-left: 3px solid var(--amber);
+    color: var(--bone);
+    font-weight: 500;
+  }
+
+  .nav-item-badge {
+    font-family: 'Geist Mono', monospace;
+    font-size: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  /* --- Main Canvas Stage --- */
+  .stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #0f0e0d;
+    overflow: hidden;
+  }
+
+  .stage-bar {
+    height: 64px;
+    border-bottom: 1px solid var(--hairline-ft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    background: #0a0a0b;
+  }
+
+  .stage-title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--bone);
+  }
+  .stage-title span {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    font-style: normal;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-left: 12px;
+  }
+
+  .zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn {
+    background: rgba(234, 229, 220, 0.05);
+    border: 1px solid rgba(234, 229, 220, 0.1);
+    color: var(--bone);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+  }
+
+  .btn.active {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+    font-weight: 500;
+  }
+
+  .canvas-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    overflow: auto;
+    background: radial-gradient(circle at center, #151413 0%, #0c0b0a 100%);
+  }
+
+  .canvas-stage {
+    transform-origin: center center;
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    border: 1px dashed rgba(212, 175, 55, 0.15);
+    background: #000;
+  }
+
+  /* --- Control & Spec Panel --- */
+  .panel {
+    width: 360px;
+    background: #080809;
+    border-left: 1px solid var(--hairline-ft);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-y: auto;
+  }
+
+  .panel-section {
+    padding: 24px;
+    border-bottom: 1px solid var(--hairline-ft);
+  }
+
+  .panel-h {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .panel-p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--bone-dim);
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  /* --- Editable Controls --- */
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .control-label {
+    font-size: 11px;
+    font-family: 'Geist Mono', monospace;
+    color: var(--bone-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .input-text {
+    width: 100%;
+    background: #11100f;
+    border: 1px solid rgba(234, 229, 220, 0.12);
+    border-radius: var(--border-radius);
+    padding: 10px 12px;
+    color: var(--bone);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-text:focus {
+    border-color: var(--amber);
+  }
+
+  .textarea-text {
+    width: 100%;
+    background: #11100f;
+    border: 1px solid rgba(234, 229, 220, 0.12);
+    border-radius: var(--border-radius);
+    padding: 10px 12px;
+    color: var(--bone);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    min-height: 80px;
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+
+  .textarea-text:focus {
+    border-color: var(--amber);
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .spec-item span:first-child { color: var(--muted); }
+  .spec-item span:last-child { color: var(--bone); font-family: 'Geist Mono', monospace; }
+
+  /* --- Swatch layout --- */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .color-card {
+    background: #121110;
+    border: 0.5px solid var(--hairline-ft);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .color-swatch {
+    height: 60px;
+    width: 100%;
+  }
+  .color-meta {
+    padding: 10px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+  }
+  .color-name {
+    color: var(--bone);
+    margin-bottom: 2px;
+  }
+  .color-hex {
+    color: var(--amber);
+  }
+
+  /* --- List Styling --- */
+  .list-bullet {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .list-bullet li {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--bone-dim);
+    margin-bottom: 8px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .list-bullet li::before {
+    content: "✦";
+    color: var(--amber);
+    position: absolute;
+    left: 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- React Dependencies -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+
+// ── BRAND TOKENS ─────────────────────────────────────────────────────
+const AK = {
+  ink:        "#0A0A0B",
+  bone:       "#EAE5DC",
+  boneDim:    "rgba(234,229,220,0.62)",
+  amber:      "#D4AF37",
+  amberDeep:  "#9A7B1E",
+  muted:      "#6E6A63",
+  hairlineFt: "rgba(212,175,55,0.18)",
+  serif:      "'Cormorant Garamond', Georgia, 'Times New Roman', serif",
+  sans:       "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+  mono:       "'Geist Mono', 'SFMono-Regular', Consolas, monospace",
+};
+
+// ── COMMON BRAND PRIMITIVES ───────────────────────────────────────────
+function Wordmark({ size = 48, color = AK.bone, dotColor = AK.amber }) {
+  return (
+    <div style={{
+      fontFamily: AK.serif,
+      fontStyle: "italic",
+      fontWeight: 500,
+      fontSize: `${size}px`,
+      letterSpacing: "0.005em",
+      color,
+      lineHeight: 0.96,
+      whiteSpace: "nowrap",
+    }}>
+      A<span style={{ fontStyle: "normal", fontWeight: 400 }}>k</span>v<span style={{ fontStyle: "normal", fontWeight: 400 }}>y</span>re<span style={{ color: dotColor }}>.</span>
+    </div>
+  );
+}
+
+function Hairline({ width = 140, color = AK.amber }) {
+  return (
+    <div style={{
+      width: `${width}px`,
+      height: "1px",
+      backgroundColor: color,
+    }} />
+  );
+}
+
+function MonoLabel({ children, size = 11, tracking = 0.22, color = AK.amber }) {
+  return (
+    <span style={{
+      fontFamily: AK.mono,
+      fontSize: `${size}px`,
+      letterSpacing: `${tracking}em`,
+      color,
+      textTransform: "uppercase",
+      lineHeight: 1.2,
+    }}>
+      {children}
+    </span>
+  );
+}
+
+function AvatarMark({ size = 400, circle = false }) {
+  const ruleY    = size * 0.54;
+  const ruleHalf = size * 0.20;
+  const dotY     = size * 0.43;
+  const dotR     = size * 0.022;
+  const stroke   = Math.max(1.6, size * 0.0075);
+
+  return (
+    <div style={{
+      width: `${size}px`, height: `${size}px`,
+      background: AK.ink,
+      borderRadius: circle ? "50%" : 0,
+      overflow: "hidden",
+      position: "relative",
+    }}>
+      <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size}
+           style={{ display: "block" }} xmlns="http://www.w3.org/2000/svg">
+        <line
+          x1={size / 2 - ruleHalf} y1={ruleY}
+          x2={size / 2 + ruleHalf} y2={ruleY}
+          stroke={AK.amber} strokeWidth={stroke} strokeLinecap="butt"
+        />
+        <circle cx={size / 2} cy={dotY} r={dotR} fill={AK.amber} />
+      </svg>
+    </div>
+  );
+}
+
+// ── LINKEDIN TEMPLATES ───────────────────────────────────────────────
+function LinkedInPost({ category, date, issue, headline, subhead }) {
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 80, boxSizing: "border-box", position: "relative",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <span style={{ width: 8, height: 8, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={14} color={AK.amber}>{category}</MonoLabel>
+        </div>
+        <MonoLabel size={14} color={AK.muted}>{date}</MonoLabel>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 32, maxWidth: 880 }}>
+        <MonoLabel size={11} color={AK.amberDeep} tracking={0.32}>RESEARCH &amp; INSIGHTS · {issue}</MonoLabel>
+        <h1 style={{
+          margin: 0, fontFamily: AK.serif, fontWeight: 400,
+          fontSize: 84, lineHeight: 1.06, letterSpacing: "-0.012em",
+          color: AK.bone,
+        }}>
+          {headline}
+        </h1>
+        <p style={{
+          margin: 0, fontFamily: AK.serif, fontStyle: "italic", fontWeight: 400,
+          fontSize: 30, lineHeight: 1.35, color: AK.boneDim,
+          maxWidth: 820,
+        }}>
+          {subhead}
+        </p>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <Wordmark size={26} />
+          <Hairline width={100} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <MonoLabel size={12} color={AK.bone}>READ AT AKVYRE.COM</MonoLabel>
+          <span style={{ fontFamily: AK.serif, fontSize: 22, color: AK.amber }}>→</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LinkedInThoughtLeadership({ tag, date, quote, author, role, avatarUrl }) {
+  return (
+    <div style={{
+      width: 1080, height: 1350, background: AK.ink, color: AK.bone,
+      padding: "96px 88px", boxSizing: "border-box",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <span style={{ width: 8, height: 8, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={14} color={AK.amber}>{tag}</MonoLabel>
+        </div>
+        <MonoLabel size={14} color={AK.muted}>{date}</MonoLabel>
+      </div>
+
+      <div style={{ display: "flex", gap: 32, alignItems: "stretch", margin: "80px 0" }}>
+        <div style={{ width: 4, background: `linear-gradient(180deg, ${AK.amber} 0%, rgba(212,175,55,0) 100%)` }} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          <span style={{
+            fontFamily: AK.serif, fontWeight: 400, fontStyle: "italic",
+            fontSize: 160, lineHeight: 0.2, color: AK.amber, height: 48, display: "block"
+          }}>“</span>
+          <p style={{
+            margin: 0, fontFamily: AK.serif, fontStyle: "italic", fontWeight: 400,
+            fontSize: 54, lineHeight: 1.35, letterSpacing: "-0.005em", color: AK.bone,
+          }}>
+            {quote}
+          </p>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderTop: `1px solid ${AK.hairlineFt}`, paddingTop: 40 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div style={{ width: 80, height: 80, borderRadius: "50%", border: `1.5px solid ${AK.amber}`, overflow: "hidden", background: "#222" }}>
+            {avatarUrl ? (
+              <img src={avatarUrl} style={{ width: "100%", height: "100%", objectFit: "cover" }} alt={author} />
+            ) : (
+              <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: AK.serif, color: AK.amber, fontSize: 32 }}>A</div>
+            )}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            <span style={{ fontFamily: AK.serif, fontWeight: 500, fontSize: 28, color: AK.bone }}>{author}</span>
+            <span style={{ fontFamily: AK.sans, fontSize: 15, color: AK.boneDim }}>{role}</span>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-end" }}>
+          <Wordmark size={24} />
+          <Hairline width={80} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LinkedInLegalUpdate({ category, date, act, section, impactHeadline, points }) {
+  const pointsArr = points.split("\n").filter(Boolean);
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 80, boxSizing: "border-box",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <span style={{ width: 8, height: 8, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={14} color={AK.amber}>{category}</MonoLabel>
+        </div>
+        <MonoLabel size={14} color={AK.muted}>{date}</MonoLabel>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 48, margin: "40px 0" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, justifyContent: "center" }}>
+          <MonoLabel size={11} color={AK.amberDeep} tracking={0.3}>STATUTORY NOTIFICATION</MonoLabel>
+          <h2 style={{ fontFamily: AK.serif, fontWeight: 500, fontSize: 52, color: AK.bone, margin: 0, lineHeight: 1.1 }}>{act}</h2>
+          <div style={{ width: 60, height: 1, background: AK.amber }} />
+          <div style={{ fontFamily: AK.mono, fontSize: 16, color: AK.amber, letterSpacing: "0.05em" }}>{section}</div>
+        </div>
+
+        <div style={{
+          background: "linear-gradient(180deg, rgba(30,27,22,0.66) 0%, rgba(20,18,14,0.5) 100%)",
+          border: `1px solid ${AK.hairlineFt}`, borderRadius: 6, padding: "36px 40px",
+          display: "flex", flexDirection: "column", gap: 24,
+          boxShadow: "0 20px 50px rgba(0,0,0,0.3)"
+        }}>
+          <MonoLabel size={10} color={AK.amber} tracking={0.22}>IMPACT FOR BOARDS &amp; FOUNDERS</MonoLabel>
+          <div style={{ fontFamily: AK.serif, fontWeight: 500, fontSize: 26, color: AK.bone, lineHeight: 1.2 }}>{impactHeadline}</div>
+          <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 14, color: AK.boneDim, fontSize: 14, lineHeight: 1.5 }}>
+            {pointsArr.map((pt, i) => <li key={i} style={{ marginBottom: 4 }}>{pt}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <Wordmark size={26} />
+          <Hairline width={100} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <MonoLabel size={12} color={AK.bone}>READ FULL BRIEFING AT AKVYRE.COM</MonoLabel>
+          <span style={{ fontFamily: AK.serif, fontSize: 22, color: AK.amber }}>→</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── INSTAGRAM TEMPLATES ──────────────────────────────────────────────
+function InstagramCarouselCover({ tag, issue, title, subtitle, slideIndex, slideTotal }) {
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 88, boxSizing: "border-box", position: "relative",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{
+        position: "absolute", top: "-10%", right: "-10%", width: 600, height: 600,
+        borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0) 70%)"
+      }} />
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", zIndex: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ width: 6, height: 6, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={13} color={AK.amber}>{tag}</MonoLabel>
+        </div>
+        <MonoLabel size={13} color={AK.muted}>{issue}</MonoLabel>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 32, zIndex: 10, maxWidth: 840 }}>
+        <h1 style={{
+          margin: 0, fontFamily: AK.serif, fontWeight: 400,
+          fontSize: 82, lineHeight: 1.08, letterSpacing: "-0.015em", color: AK.bone,
+          whiteSpace: "pre-line"
+        }}>
+          {title}
+        </h1>
+        <p style={{
+          margin: 0, fontFamily: AK.serif, fontStyle: "italic", fontWeight: 400,
+          fontSize: 28, lineHeight: 1.45, color: AK.boneDim, maxWidth: 720
+        }}>
+          {subtitle}
+        </p>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", zIndex: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <Wordmark size={24} />
+          <Hairline width={80} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <MonoLabel size={12} color={AK.bone}>SWIPE RIGHT</MonoLabel>
+            <span style={{ fontFamily: AK.serif, fontSize: 20, color: AK.amber }}>→</span>
+          </div>
+          <div style={{ fontFamily: AK.mono, fontSize: 13, color: AK.amber, letterSpacing: "0.1em" }}>
+            {slideIndex} <span style={{ color: AK.muted }}>/</span> {slideTotal}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InstagramCarouselContent({ tag, stepNumber, stepTitle, stepDescription, takeaway, slideIndex, slideTotal }) {
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 88, boxSizing: "border-box", position: "relative",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ width: 6, height: 6, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={13} color={AK.amber}>{tag}</MonoLabel>
+        </div>
+        <div style={{ fontFamily: AK.mono, fontSize: 44, fontWeight: 300, color: "rgba(212,175,55,0.22)", lineHeight: 1 }}>{stepNumber}</div>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 32, maxWidth: 840 }}>
+        <h2 style={{
+          margin: 0, fontFamily: AK.serif, fontWeight: 400,
+          fontSize: 60, lineHeight: 1.15, color: AK.bone
+        }}>
+          {stepTitle}
+        </h2>
+        <p style={{
+          margin: 0, fontFamily: AK.sans, fontWeight: 300,
+          fontSize: 24, lineHeight: 1.6, color: AK.boneDim,
+        }}>
+          {stepDescription}
+        </p>
+
+        <div style={{
+          marginTop: 20, borderLeft: `2.5px solid ${AK.amber}`, paddingLeft: 24,
+          fontFamily: AK.serif, fontStyle: "italic", fontSize: 22, color: AK.boneDim, lineHeight: 1.45
+        }}>
+          <strong style={{ color: AK.bone, fontWeight: 500, fontStyle: "normal", display: "block", marginBottom: 6 }}>TAKEAWAY:</strong>
+          {takeaway}
+        </div>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <Wordmark size={20} />
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <MonoLabel size={12} color={AK.bone}>SWIPE RIGHT</MonoLabel>
+            <span style={{ fontFamily: AK.serif, fontSize: 20, color: AK.amber }}>→</span>
+          </div>
+          <div style={{ fontFamily: AK.mono, fontSize: 13, color: AK.amber, letterSpacing: "0.1em" }}>
+            {slideIndex} <span style={{ color: AK.muted }}>/</span> {slideTotal}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function InstagramCarouselCTA({ tag, title, body, cta, email, website }) {
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 88, boxSizing: "border-box", position: "relative",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+      alignItems: "center", textAlign: "center"
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <span style={{ width: 6, height: 6, background: AK.amber, borderRadius: "50%" }} />
+        <MonoLabel size={13} color={AK.amber}>{tag}</MonoLabel>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32, maxWidth: 780, margin: "auto 0" }}>
+        <div style={{ width: 80, height: 80, border: `1.5px solid ${AK.amber}`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ fontFamily: AK.serif, fontStyle: "italic", fontSize: 44, color: AK.bone, fontWeight: 500 }}>A</div>
+        </div>
+        
+        <h1 style={{
+          margin: 0, fontFamily: AK.serif, fontWeight: 400,
+          fontSize: 66, lineHeight: 1.15, color: AK.bone, textWrap: "balance"
+        }}>
+          {title}
+        </h1>
+        <p style={{
+          margin: 0, fontFamily: AK.sans, fontWeight: 300,
+          fontSize: 22, lineHeight: 1.6, color: AK.boneDim, textWrap: "balance"
+        }}>
+          {body}
+        </p>
+
+        <div style={{
+          background: "rgba(212,175,55,0.06)", border: `0.5px solid ${AK.hairlineFt}`,
+          borderRadius: 4, padding: "16px 28px", marginTop: 12, display: "inline-flex", alignItems: "center", gap: 10
+        }}>
+          <span style={{ color: AK.amber, fontSize: 18 }}>✦</span>
+          <MonoLabel size={11} color={AK.bone}>{cta}</MonoLabel>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, width: "100%", borderTop: `0.5px solid ${AK.hairlineFt}`, paddingTop: 36 }}>
+        <div style={{ display: "flex", gap: 40, fontFamily: AK.mono, fontSize: 15, letterSpacing: "0.08em" }}>
+          <span style={{ color: AK.bone }}>{email}</span>
+          <span style={{ color: AK.amber }}>·</span>
+          <span style={{ color: AK.bone }}>{website}</span>
+        </div>
+        <Wordmark size={24} />
+      </div>
+    </div>
+  );
+}
+
+function InstagramLegalAwareness({ tag, issue, title, bullets }) {
+  const bulletArr = bullets.split("\n").filter(Boolean).map((line, idx) => {
+    const [term, ...descParts] = line.split(":");
+    return {
+      num: String(idx + 1).padStart(2, "0"),
+      term: term ? term.trim() : "Compliance Check",
+      desc: descParts.length ? descParts.join(":").trim() : "Detailed compliance requirement to track."
+    };
+  });
+
+  return (
+    <div style={{
+      width: 1080, height: 1350, background: AK.ink, color: AK.bone,
+      padding: "96px 88px", boxSizing: "border-box",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ width: 6, height: 6, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={14} color={AK.amber}>{tag}</MonoLabel>
+        </div>
+        <MonoLabel size={14} color={AK.muted}>{issue}</MonoLabel>
+      </div>
+
+      <div style={{ margin: "32px 0 16px" }}>
+        <h1 style={{
+          margin: 0, fontFamily: AK.serif, fontWeight: 400,
+          fontSize: 62, lineHeight: 1.1, letterSpacing: "-0.015em", color: AK.bone,
+          whiteSpace: "pre-line"
+        }}>
+          {title}
+        </h1>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 26, flex: 1, margin: "20px 0", justifyContent: "center" }}>
+        {bulletArr.map((b, i) => (
+          <div key={i} style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+            <div style={{ fontFamily: AK.mono, fontSize: 16, color: AK.amber, fontWeight: 500, marginTop: 4 }}>{b.num}</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <span style={{ fontFamily: AK.serif, fontWeight: 500, fontSize: 24, color: AK.bone }}>{b.term}</span>
+              <span style={{ fontFamily: AK.sans, fontSize: 16, color: AK.boneDim, lineHeight: 1.5, fontWeight: 300 }}>{b.desc}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderTop: `0.5px solid ${AK.hairlineFt}`, paddingTop: 36 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <Wordmark size={22} />
+          <Hairline width={80} />
+        </div>
+        <MonoLabel size={11} color={AK.muted}>AKVYRE LEGAL LLP</MonoLabel>
+      </div>
+    </div>
+  );
+}
+
+function InstagramFounderProfile({ name, title, advice, avatarUrl }) {
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 88, boxSizing: "border-box",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <MonoLabel size={13} color={AK.amber}>FOUNDER ADVICE · SERIES</MonoLabel>
+        <MonoLabel size={13} color={AK.muted}>PARTNER VIEW</MonoLabel>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.3fr", gap: 48, margin: "auto 0" }}>
+        <div style={{
+          position: "relative", width: "100%", height: 420,
+          border: `1.5px solid ${AK.amber}`, borderRadius: 4, overflow: "hidden", background: "#111"
+        }}>
+          {avatarUrl ? (
+            <img src={avatarUrl} style={{ width: "100%", height: "100%", objectFit: "cover" }} alt={name} />
+          ) : (
+            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: AK.serif, color: AK.amber, fontSize: 44 }}>A</div>
+          )}
+          <div style={{ position: "absolute", bottom: 20, left: 20, zIndex: 10 }}>
+            <div style={{ borderRadius: "50%", background: AK.ink, border: `1px solid ${AK.amber}`, width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontFamily: AK.serif, fontSize: 22, color: AK.amber, fontStyle: "italic", fontWeight: 500 }}>A</span>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 28 }}>
+          <span style={{
+            fontFamily: AK.serif, fontWeight: 400, fontStyle: "italic",
+            fontSize: 100, lineHeight: 0.2, color: AK.amber, height: 28
+          }}>“</span>
+          <p style={{
+            margin: 0, fontFamily: AK.serif, fontStyle: "italic", fontWeight: 400,
+            fontSize: 34, lineHeight: 1.45, color: AK.bone, letterSpacing: "-0.005em"
+          }}>
+            {advice}
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 8 }}>
+            <span style={{ fontFamily: AK.serif, fontWeight: 500, fontSize: 26, color: AK.bone }}>{name}</span>
+            <span style={{ fontFamily: AK.sans, fontSize: 15, color: AK.amber }}>{title}</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <Wordmark size={20} />
+          <Hairline width={60} />
+        </div>
+        <MonoLabel size={11} color={AK.muted}>AKVYRE.COM</MonoLabel>
+      </div>
+    </div>
+  );
+}
+
+function InstagramCaseUpdate({ category, date, courtName, caseTitle, bench, timeline }) {
+  const timelineArr = timeline.split("\n").filter(Boolean).map(line => {
+    const [tDate, eventAndStatus] = line.split(":");
+    const [event, status] = eventAndStatus ? eventAndStatus.split("|") : ["Action item review details.", "ACTIVE"];
+    return {
+      date: tDate ? tDate.trim() : "DATE",
+      event: event ? event.trim() : "Case proceeding detail.",
+      status: status ? status.trim() : "ACTIVE"
+    };
+  });
+
+  return (
+    <div style={{
+      width: 1080, height: 1080, background: AK.ink, color: AK.bone,
+      padding: 88, boxSizing: "border-box",
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ width: 6, height: 6, background: AK.amber, borderRadius: "50%" }} />
+          <MonoLabel size={13} color={AK.amber}>{category}</MonoLabel>
+        </div>
+        <MonoLabel size={13} color={AK.muted}>{date}</MonoLabel>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <MonoLabel size={10} color={AK.amberDeep}>{courtName}</MonoLabel>
+        <h1 style={{
+          margin: 0, fontFamily: AK.serif, fontWeight: 500,
+          fontSize: 48, lineHeight: 1.15, color: AK.bone, letterSpacing: "-0.01em"
+        }}>
+          {caseTitle}
+        </h1>
+        <div style={{ fontFamily: AK.sans, fontSize: 16, color: AK.boneDim, fontWeight: 300 }}>{bench}</div>
+        <div style={{ width: "100%", height: 1, background: AK.hairlineFt, marginTop: 12 }} />
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 20, margin: "20px 0" }}>
+        {timelineArr.map((row, i) => (
+          <div key={i} style={{ display: "grid", gridTemplateColumns: "1.1fr 2.5fr 1fr", gap: 24, alignItems: "center", padding: "16px 20px", background: "rgba(255,255,255,0.02)", border: `0.5px solid ${AK.hairlineFt}`, borderRadius: 4 }}>
+            <div style={{ fontFamily: AK.mono, fontSize: 14, color: AK.amber }}>{row.date}</div>
+            <div style={{ fontFamily: AK.serif, fontSize: 20, color: AK.bone, lineHeight: 1.35 }}>{row.event}</div>
+            <div style={{
+              justifySelf: "end", fontFamily: AK.mono, fontSize: 11, letterSpacing: "0.15em",
+              border: `1.5px solid ${AK.hairlineFt}`, borderRadius: 2, padding: "5px 12px", color: AK.amber, textTransform: "uppercase"
+            }}>{row.status}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <Wordmark size={20} />
+          <Hairline width={60} />
+        </div>
+        <MonoLabel size={11} color={AK.muted}>AKVYRE LEGAL LLP · RESEARCH</MonoLabel>
+      </div>
+    </div>
+  );
+}
+
+
+// ── MAIN DASHBOARD APPLICATION ────────────────────────────────────────
+function App() {
+  const [activeTab, setActiveTab] = React.useState("brand-kit");
+  const [zoom, setZoom] = React.useState(0.5);
+
+  // Live editable fields
+  const [liPost, setLiPost] = React.useState({
+    category: "ANALYSIS · DPDP RULES",
+    date: "28 MAY 2026",
+    issue: "ISSUE 04",
+    headline: "Notice & consent under the DPDP Rules, 2025.",
+    subhead: "Section 6 read with Rule 3 — what 'specific, informed, unconditional' looks like in audit."
+  });
+
+  const [liThought, setLiThought] = React.useState({
+    tag: "THOUGHT LEADERSHIP",
+    date: "03 JUN 2026",
+    quote: "In regulatory compliance, simplicity is the ultimate security. Over-engineered compliance frameworks often fail because they create friction, not protection.",
+    author: "Adv. Vaayu Goyal",
+    role: "Partner · Akvyre Legal LLP",
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200"
+  });
+
+  const [liUpdate, setLiUpdate] = React.useState({
+    category: "LEGAL BRIEFING",
+    date: "03 JUN 2026",
+    act: "COMPANIES ACT, 2013",
+    section: "Sec. 135 — CSR Amendments",
+    impactHeadline: "Mandatory Unspent CSR Fund Transfer Guidelines",
+    points: "Unspent CSR funds must go to a Special Account in 30 days.\nNon-compliance triggers up to ₹1 Crore penalty.\nBoards must quarterly verify CSR audits."
+  });
+
+  const [instaCover, setInstaCover] = React.useState({
+    tag: "LEGAL GUIDE · INSIGHTS",
+    issue: "CAROUSEL 01",
+    title: "DPDP Act:\nKey Checklist for Tech Startups.",
+    subtitle: "A premium step-by-step roadmap to align your consent architecture and data pipelines before the penalties kick in.",
+    slideIndex: "01",
+    slideTotal: "05"
+  });
+
+  const [instaContent, setInstaContent] = React.useState({
+    tag: "DPDP ALIGNMENT PLAN",
+    stepNumber: "02",
+    stepTitle: "Map your Consent Flow",
+    stepDescription: "Under Section 6, consent must be free, specific, informed, unconditional, and unambiguous. You cannot bundle consent options inside long Terms of Use contracts.",
+    takeaway: "Action point: Build granular, itemized consent check-boxes on your signup flow rather than a single 'I Agree' button.",
+    slideIndex: "02",
+    slideTotal: "05"
+  });
+
+  const [instaCTA, setInstaCTA] = React.useState({
+    tag: "AKVYRE LEGAL LLP",
+    title: "Partner-level expertise. Always.",
+    body: "We protect what you have built, and navigate what's next. At Akvyre, we provide corporate, compliance, and disputes counsel tailored to your business realities.",
+    cta: "Save this post for reference",
+    email: "info@akvyre.com",
+    website: "akvyre.com"
+  });
+
+  const [instaAware, setInstaAware] = React.useState({
+    tag: "LEGAL EDUCATION",
+    issue: "GUIDE · NO. 12",
+    title: "POSH Compliance: \nAre you auditing correctly?",
+    bullets: "01. Internal Committee : Must be constituted at every branch with 10+ workers.\n02. Annual Filings : Reports must be filed with District Officer by Dec 31.\n03. Training : Run annual workshops for employees and explicit IC sessions.\n04. Anti-Harassment : Draft and distribute policies in local languages."
+  });
+
+  const [instaFounder, setInstaFounder] = React.useState({
+    name: "Adv. Vaayu Goyal",
+    title: "Partner, Corporate & M&A",
+    advice: "In negotiation, silence is a legal position. The quietest rooms often produce the sharpest deals. Closing quietly isn't just an art form; it is standard risk control.",
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=350&h=450"
+  });
+
+  const [instaCase, setInstaCase] = React.useState({
+    category: "CASE TRACKER",
+    date: "03 JUN 2026",
+    courtName: "SUPREME COURT OF INDIA",
+    caseTitle: "In Re: Data Privacy Standards",
+    bench: "Bench: Hon'ble Justice D.Y. Chandrachud & Ors.",
+    timeline: "12 MAR 2026 : Hearings concluded; judgment reserved. | HEARING\n24 APR 2026 : Interim guidelines issued on encryption keys. | INTERIM\n29 MAY 2026 : Review petition filed on behalf of tech consortium. | ACTIVE"
+  });
+
+  const renderSelectedTemplate = () => {
+    switch (activeTab) {
+      // --- LINKEDIN ---
+      case "li-post":
+        return <LinkedInPost {...liPost} />;
+      case "li-thought":
+        return <LinkedInThoughtLeadership {...liThought} />;
+      case "li-update":
+        return <LinkedInLegalUpdate {...liUpdate} />;
+
+      // --- INSTAGRAM ---
+      case "ig-cover":
+        return <InstagramCarouselCover {...instaCover} />;
+      case "ig-content":
+        return <InstagramCarouselContent {...instaContent} />;
+      case "ig-cta":
+        return <InstagramCarouselCTA {...instaCTA} />;
+      case "ig-awareness":
+        return <InstagramLegalAwareness {...instaAware} />;
+      case "ig-founder":
+        return <InstagramFounderProfile {...instaFounder} />;
+      case "ig-case":
+        return <InstagramCaseUpdate {...instaCase} />;
+
+      default:
+        return null;
+    }
+  };
+
+  const getCanvasDimensions = () => {
+    switch (activeTab) {
+      case "li-thought":
+      case "ig-awareness":
+        return { w: 1080, h: 1350 };
+      default:
+        return { w: 1080, h: 1080 };
+    }
+  };
+
+  const getActiveTabTitle = () => {
+    switch (activeTab) {
+      case "brand-kit": return "Social Media Brand Kit";
+      case "li-post": return "LinkedIn Post (Standard)";
+      case "li-thought": return "LinkedIn Thought Leadership (4:5)";
+      case "li-update": return "LinkedIn Legal Update Briefing";
+      case "ig-cover": return "Instagram Carousel (Cover)";
+      case "ig-content": return "Instagram Carousel (Slide)";
+      case "ig-cta": return "Instagram Carousel (CTA Outro)";
+      case "ig-awareness": return "Instagram Legal Awareness (4:5)";
+      case "ig-founder": return "Instagram Founder Profile";
+      case "ig-case": return "Instagram Case & Regulatory Update";
+      default: return "Dashboard";
+    }
+  };
+
+  return (
+    <React.Fragment>
+      {/* ── LEFT SIDEBAR (NAVIGATION) ── */}
+      <div className="sidebar">
+        <div className="sidebar-header">
+          <div className="sidebar-logo">Akvyre<span>.</span></div>
+          <div className="sidebar-tag">Social Brand Kit v1.0</div>
+        </div>
+
+        <ul className="nav-list">
+          <li className={`nav-item ${activeTab === 'brand-kit' ? 'active' : ''}`} onClick={() => setActiveTab('brand-kit')}>
+            <span>✦ Brand Kit & Guidelines</span>
+          </li>
+
+          <div className="nav-group-title">LinkedIn Templates</div>
+          <li className={`nav-item ${activeTab === 'li-post' ? 'active' : ''}`} onClick={() => setActiveTab('li-post')}>
+            <span>Standard Post</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'li-thought' ? 'active' : ''}`} onClick={() => setActiveTab('li-thought')}>
+            <span>Thought Leadership</span>
+            <span className="nav-item-badge">4:5</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'li-update' ? 'active' : ''}`} onClick={() => setActiveTab('li-update')}>
+            <span>Legal Update Briefing</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+
+          <div className="nav-group-title">Instagram Templates</div>
+          <li className={`nav-item ${activeTab === 'ig-cover' ? 'active' : ''}`} onClick={() => setActiveTab('ig-cover')}>
+            <span>Carousel Cover</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'ig-content' ? 'active' : ''}`} onClick={() => setActiveTab('ig-content')}>
+            <span>Carousel Content Slide</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'ig-cta' ? 'active' : ''}`} onClick={() => setActiveTab('ig-cta')}>
+            <span>Carousel CTA Outro</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'ig-awareness' ? 'active' : ''}`} onClick={() => setActiveTab('ig-awareness')}>
+            <span>Legal Awareness Check</span>
+            <span className="nav-item-badge">4:5</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'ig-founder' ? 'active' : ''}`} onClick={() => setActiveTab('ig-founder')}>
+            <span>Founder Profile</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+          <li className={`nav-item ${activeTab === 'ig-case' ? 'active' : ''}`} onClick={() => setActiveTab('ig-case')}>
+            <span>Case / Status Update</span>
+            <span className="nav-item-badge">1:1</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* ── CENTRAL PREVIEW AREA ── */}
+      <div className="stage">
+        <div className="stage-bar">
+          <div className="stage-title">
+            {getActiveTabTitle()}
+            {activeTab !== 'brand-kit' && <span>Canvas Stage</span>}
+          </div>
+
+          {activeTab !== 'brand-kit' && (
+            <div className="zoom-controls">
+              <button className={`btn ${zoom === 0.35 ? 'active' : ''}`} onClick={() => setZoom(0.35)}>35%</button>
+              <button className={`btn ${zoom === 0.5 ? 'active' : ''}`} onClick={() => setZoom(0.5)}>50%</button>
+              <button className={`btn ${zoom === 0.75 ? 'active' : ''}`} onClick={() => setZoom(0.75)}>75%</button>
+              <button className={`btn ${zoom === 1.0 ? 'active' : ''}`} onClick={() => setZoom(1.0)}>100%</button>
+            </div>
+          )}
+        </div>
+
+        <div className="canvas-container">
+          {activeTab === 'brand-kit' ? (
+            /* BRAND KIT GUIDELINES DISPLAY */
+            <div style={{ maxWidth: 880, width: "100%", padding: "20px 0" }}>
+              <div style={{ marginBottom: 48 }}>
+                <MonoLabel size={11} color={AK.amberDeep}>AKVYRE VISUAL SYSTEM</MonoLabel>
+                <h1 style={{ fontFamily: AK.serif, fontStyle: "italic", fontSize: 52, margin: "12px 0", color: AK.bone }}>Social Media Brand Kit</h1>
+                <p style={{ color: AK.boneDim, fontSize: 15, lineHeight: 1.7 }}>
+                  Welcome to the Akvyre Legal LLP Social Media Brand Kit. This dashboard delivers interactive React templates built directly upon the firm's premium identity guidelines: deep cinematic values, sharp geometric rules, characterful serif accents, and robust grid columns.
+                </p>
+              </div>
+
+              {/* SECTION: Color Palettes */}
+              <div style={{ marginBottom: 40 }}>
+                <h2 style={{ fontFamily: AK.serif, fontSize: 28, borderBottom: `1px solid ${AK.hairlineFt}`, paddingBottom: 12, marginBottom: 20 }}>1. Color Palette Tokens</h2>
+                <div className="color-grid">
+                  <div className="color-card">
+                    <div className="color-swatch" style={{ background: "#0A0A0B" }} />
+                    <div className="color-meta">
+                      <div className="color-name">Primary Ink</div>
+                      <div className="color-hex">#0A0A0B</div>
+                    </div>
+                  </div>
+                  <div className="color-card">
+                    <div className="color-swatch" style={{ background: "#EAE5DC" }} />
+                    <div className="color-meta">
+                      <div className="color-name">Ivory Bone</div>
+                      <div className="color-hex">#EAE5DC</div>
+                    </div>
+                  </div>
+                  <div className="color-card">
+                    <div className="color-swatch" style={{ background: "#D4AF37" }} />
+                    <div className="color-meta">
+                      <div className="color-name">Warm Amber (Gold)</div>
+                      <div className="color-hex">#D4AF37</div>
+                    </div>
+                  </div>
+                  <div className="color-card">
+                    <div className="color-swatch" style={{ background: "#9A7B1E" }} />
+                    <div className="color-meta">
+                      <div className="color-name">Amber Deep</div>
+                      <div className="color-hex">#9A7B1E</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION: Typography */}
+              <div style={{ marginBottom: 40 }}>
+                <h2 style={{ fontFamily: AK.serif, fontSize: 28, borderBottom: `1px solid ${AK.hairlineFt}`, paddingBottom: 12, marginBottom: 20 }}>2. Editorial Typography</h2>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  <div>
+                    <MonoLabel size={9} color={AK.muted}>SERIF BRAND DISPLAY (CORMO RANT GARAMOND)</MonoLabel>
+                    <div style={{ fontFamily: AK.serif, fontStyle: "italic", fontSize: 32, marginTop: 4 }}>Akvyre. - Partner-level expertise. Always.</div>
+                  </div>
+                  <div>
+                    <MonoLabel size={9} color={AK.muted}>SANS BODY INTERFACE (INTER)</MonoLabel>
+                    <div style={{ fontFamily: AK.sans, fontSize: 16, fontWeight: 300, lineHeight: 1.6, color: AK.boneDim, marginTop: 4 }}>
+                      Clean, high-legibility geometric sans-serif for body descriptions, lists, bullet matrices, and labels.
+                    </div>
+                  </div>
+                  <div>
+                    <MonoLabel size={9} color={AK.muted}>MONOSPACE DETAIL &amp; DATES (GEIST MONO)</MonoLabel>
+                    <div style={{ fontFamily: AK.mono, fontSize: 14, color: AK.amber, marginTop: 4 }}>
+                      EST · DELHI · HARYANA · REGULATORY UPDATE Sec. 135
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION: How to use */}
+              <div style={{ marginBottom: 40 }}>
+                <h2 style={{ fontFamily: AK.serif, fontSize: 28, borderBottom: `1px solid ${AK.hairlineFt}`, paddingBottom: 12, marginBottom: 20 }}>3. How to Use &amp; Export</h2>
+                <ul className="list-bullet">
+                  <li>Select any template from the left navigation panel.</li>
+                  <li>In the right-hand panel, edit any field (e.g. Headlines, Quotes, Category tags) to customize the post. The preview on the canvas will update instantly.</li>
+                  <li>Use the zoom buttons at the top right (35%, 50%, 75%, 100%) to fit the canvas layout to your screen.</li>
+                  <li><b>Exporting</b>: Right-click the visual canvas card and click "Inspect Element" (or use a standard screen-capture tool, or export via standard dev-tools screenshot at 100% scale for exact pixel dimensions: 1080×1080 or 1080×1350).</li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            /* DYNAMIC CANVAS PREVIEW */
+            <div className="canvas-stage" style={{
+              width: getCanvasDimensions().w,
+              height: getCanvasDimensions().h,
+              transform: `scale(${zoom})`,
+            }}>
+              {renderSelectedTemplate()}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── RIGHT CONTROL & SPEC PANEL ── */}
+      {activeTab !== 'brand-kit' && (
+        <div className="panel">
+          <div className="panel-section">
+            <h3 className="panel-h">TEMPLATE SETTINGS</h3>
+            <p className="panel-p">Customize the text below. The canvas will update instantly.</p>
+
+            {/* DYNAMIC EDITABLE FIELDS BY COMPONENT */}
+            {activeTab === "li-post" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Category Tag</label>
+                  <input className="input-text" type="text" value={liPost.category} onChange={e => setLiPost({...liPost, category: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Date String</label>
+                  <input className="input-text" type="text" value={liPost.date} onChange={e => setLiPost({...liPost, date: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Issue Indicator</label>
+                  <input className="input-text" type="text" value={liPost.issue} onChange={e => setLiPost({...liPost, issue: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Headline</label>
+                  <textarea className="textarea-text" value={liPost.headline} onChange={e => setLiPost({...liPost, headline: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Subhead / Teaser</label>
+                  <textarea className="textarea-text" value={liPost.subhead} onChange={e => setLiPost({...liPost, subhead: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "li-thought" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Category Tag</label>
+                  <input className="input-text" type="text" value={liThought.tag} onChange={e => setLiThought({...liThought, tag: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Quote Content</label>
+                  <textarea className="textarea-text" value={liThought.quote} onChange={e => setLiThought({...liThought, quote: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Author Name</label>
+                  <input className="input-text" type="text" value={liThought.author} onChange={e => setLiThought({...liThought, author: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Author Title / Role</label>
+                  <input className="input-text" type="text" value={liThought.role} onChange={e => setLiThought({...liThought, role: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Avatar Image URL (HTTPS)</label>
+                  <input className="input-text" type="text" value={liThought.avatarUrl} onChange={e => setLiThought({...liThought, avatarUrl: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "li-update" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Category</label>
+                  <input className="input-text" type="text" value={liUpdate.category} onChange={e => setLiUpdate({...liUpdate, category: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Act / Statutory Body</label>
+                  <input className="input-text" type="text" value={liUpdate.act} onChange={e => setLiUpdate({...liUpdate, act: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Section Reference</label>
+                  <input className="input-text" type="text" value={liUpdate.section} onChange={e => setLiUpdate({...liUpdate, section: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Impact Subtitle</label>
+                  <input className="input-text" type="text" value={liUpdate.impactHeadline} onChange={e => setLiUpdate({...liUpdate, impactHeadline: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Bullet points (One per line)</label>
+                  <textarea className="textarea-text" value={liUpdate.points} onChange={e => setLiUpdate({...liUpdate, points: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "ig-cover" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Carousel Tag</label>
+                  <input className="input-text" type="text" value={instaCover.tag} onChange={e => setInstaCover({...instaCover, tag: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Headline (Supports \n for breaks)</label>
+                  <textarea className="textarea-text" value={instaCover.title} onChange={e => setInstaCover({...instaCover, title: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Description / Subhead</label>
+                  <textarea className="textarea-text" value={instaCover.subtitle} onChange={e => setInstaCover({...instaCover, subtitle: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Slide index / Total</label>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <input className="input-text" type="text" style={{ width: "50%" }} value={instaCover.slideIndex} onChange={e => setInstaCover({...instaCover, slideIndex: e.target.value})} />
+                    <input className="input-text" type="text" style={{ width: "50%" }} value={instaCover.slideTotal} onChange={e => setInstaCover({...instaCover, slideTotal: e.target.value})} />
+                  </div>
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "ig-content" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Series Tag</label>
+                  <input className="input-text" type="text" value={instaContent.tag} onChange={e => setInstaContent({...instaContent, tag: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Step / Slide number</label>
+                  <input className="input-text" type="text" value={instaContent.stepNumber} onChange={e => setInstaContent({...instaContent, stepNumber: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Step Headline</label>
+                  <input className="input-text" type="text" value={instaContent.stepTitle} onChange={e => setInstaContent({...instaContent, stepTitle: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Description Text</label>
+                  <textarea className="textarea-text" value={instaContent.stepDescription} onChange={e => setInstaContent({...instaContent, stepDescription: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Gold Key Takeaway</label>
+                  <textarea className="textarea-text" value={instaContent.takeaway} onChange={e => setInstaContent({...instaContent, takeaway: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "ig-cta" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Header Tag</label>
+                  <input className="input-text" type="text" value={instaCTA.tag} onChange={e => setInstaCTA({...instaCTA, tag: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Pitch Title</label>
+                  <input className="input-text" type="text" value={instaCTA.title} onChange={e => setInstaCTA({...instaCTA, title: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Pitch Description</label>
+                  <textarea className="textarea-text" value={instaCTA.body} onChange={e => setInstaCTA({...instaCTA, body: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Save / Action Tag</label>
+                  <input className="input-text" type="text" value={instaCTA.cta} onChange={e => setInstaCTA({...instaCTA, cta: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Email</label>
+                  <input className="input-text" type="text" value={instaCTA.email} onChange={e => setInstaCTA({...instaCTA, email: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Website Domain</label>
+                  <input className="input-text" type="text" value={instaCTA.website} onChange={e => setInstaCTA({...instaCTA, website: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "ig-awareness" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Category / Subject Tag</label>
+                  <input className="input-text" type="text" value={instaAware.tag} onChange={e => setInstaAware({...instaAware, tag: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Headline (Supports \n for breaks)</label>
+                  <textarea className="textarea-text" value={instaAware.title} onChange={e => setInstaAware({...instaAware, title: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Checkpoints (Format as Name : Description - one per line)</label>
+                  <textarea className="textarea-text" value={instaAware.bullets} onChange={e => setInstaAware({...instaAware, bullets: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "ig-founder" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Partner Name</label>
+                  <input className="input-text" type="text" value={instaFounder.name} onChange={e => setInstaFounder({...instaFounder, name: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Role Title</label>
+                  <input className="input-text" type="text" value={instaFounder.title} onChange={e => setInstaFounder({...instaFounder, title: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Quote / Advice text</label>
+                  <textarea className="textarea-text" value={instaFounder.advice} onChange={e => setInstaFounder({...instaFounder, advice: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Founder Image URL (HTTPS)</label>
+                  <input className="input-text" type="text" value={instaFounder.avatarUrl} onChange={e => setInstaFounder({...instaFounder, avatarUrl: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+
+            {activeTab === "ig-case" && (
+              <React.Fragment>
+                <div className="control-group">
+                  <label className="control-label">Tracker Category</label>
+                  <input className="input-text" type="text" value={instaCase.category} onChange={e => setInstaCase({...instaCase, category: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Court Body</label>
+                  <input className="input-text" type="text" value={instaCase.courtName} onChange={e => setInstaCase({...instaCase, courtName: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Case Title</label>
+                  <input className="input-text" type="text" value={instaCase.caseTitle} onChange={e => setInstaCase({...instaCase, caseTitle: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Presiding Bench</label>
+                  <input className="input-text" type="text" value={instaCase.bench} onChange={e => setInstaCase({...instaCase, bench: e.target.value})} />
+                </div>
+                <div className="control-group">
+                  <label className="control-label">Timeline items (Format as Date : Description | STATUS - one per line)</label>
+                  <textarea className="textarea-text" value={instaCase.timeline} onChange={e => setInstaCase({...instaCase, timeline: e.target.value})} />
+                </div>
+              </React.Fragment>
+            )}
+          </div>
+
+          <div className="panel-section" style={{ borderBottom: 0 }}>
+            <h3 className="panel-h">EXPORT SPECS</h3>
+            <div className="spec-item">
+              <span>Dimension</span>
+              <span>{getCanvasDimensions().w} × {getCanvasDimensions().h} px</span>
+            </div>
+            <div className="spec-item">
+              <span>Aspect Ratio</span>
+              <span>{getCanvasDimensions().w === 1080 && getCanvasDimensions().h === 1350 ? "4:5 (Portrait)" : "1:1 (Square)"}</span>
+            </div>
+            <div className="spec-item">
+              <span>Color Profile</span>
+              <span>sRGB (No bleed)</span>
+            </div>
+            <div className="spec-item">
+              <span>File Format</span>
+              <span>PNG-24 (uncompressed)</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
