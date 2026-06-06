@@ -264,11 +264,11 @@ function Footer() {
               <Wordmark size={56} />
             </Link>
             <p className="font-display mt-6 max-w-xs" style={{ fontSize: 18, color: "var(--bone-dim)", lineHeight: 1.45, fontWeight: 300 }}>
-              A commercial law firm built for the next decade of Indian business.
+              A full service law firm built for the next decade of business.
             </p>
             <div className="flex gap-5 items-center mt-10">
               <a
-                href="https://www.linkedin.com/company/lawselor/"
+                href="https://www.linkedin.com/company/akvyre/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="LinkedIn"
