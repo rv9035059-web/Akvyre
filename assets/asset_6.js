@@ -8,9 +8,9 @@ const PEOPLE = [
     last: "Tyagi",
     role: "Managing Partner | 12+ Years Disputes Practice",
     image: "assets/akshay_tyagi.jpg",
-    short: "Akshay Tyagi is a Managing Partner at Akvyre Legal LLP and leads the firm’s disputes practice with a focus on bespoke solutions and services for visionary corporates and individuals. With extensive experience in disputes across courts and a risk mitigation mindset.",
+    short: "Akshay Tyagi is a Managing Partner at Akvyre Legal LLP and leads the firm’s disputes practice with a focus on bespoke solutions and services.",
     bio: [
-      "Akshay leads our litigation practice with extensive experience across civil, commercial, and criminal forums. His unique technical-legal background combined with proven courtroom expertise enables strategic advocacy with procedural precision and business acumen.",
+      "Akshay Tyagi is a Managing Partner at Akvyre Legal LLP and leads the firm’s disputes practice with a focus on bespoke solutions and services for visionary corporates and individuals. With extensive experience in disputes across courts and a risk mitigation mindset.",
     ],
     italics: ["Chambers Asia-Pacific", "The Legal 500", "Bar & Bench", "IndiaCorpLaw"],
     education: [
@@ -49,9 +49,9 @@ const PEOPLE = [
     last: "Goyal",
     role: "Partner | Corporate Practice Head",
     image: "assets/vaayu_goyal.jpg",
-    short: "Vaayu Goyal is a Partner at Akvyre Legal LLP and leads the firm's Compliance, Contracts & Legal Advisory practice. She advises businesses - particularly growth-stage companies, on corporate governance, regulatory compliance, and commercial contracting, with an approach that is as attuned to business strategy as it is to legal precision.",
+    short: "Vaayu Goyal is a Partner at Akvyre Legal LLP and leads the firm's Compliance, Contracts & Legal Advisory practice.",
     bio: [
-      "Vaayu leads our compliance and advisory practice with deep expertise in corporate governance, regulatory navigation, and commercial contracting. Her experience supporting growth-stage companies from boardroom strategy to courtroom resolution enables pragmatic, business-aligned legal solutions across evolving regulatory environments.",
+      "Vaayu Goyal is a Partner at Akvyre Legal LLP and leads the firm's Compliance, Contracts & Legal Advisory practice. She advises businesses - particularly growth-stage companies, on corporate governance, regulatory compliance, and commercial contracting, with an approach that is as attuned to business strategy as it is to legal precision.",
     ],
     italics: ["Chambers Asia-Pacific", "GAR", "Indian Journal of Arbitration Law"],
     education: [
