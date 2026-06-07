@@ -93,6 +93,16 @@ const PEOPLE = [
     noDetail: true,
   },
   {
+    slug: "people-manuraje-karwasra",
+    initials: "MK",
+    first: "Manuraje",
+    last: "Karwasra",
+    role: "Data Privacy Consultant",
+    image: "assets/manuraje_karwasra.jpg",
+    short: "8+ Years of Experience in Data Privacy, Cybersecurity, and Compliance.",
+    noDetail: true,
+  },
+  {
     slug: "people-amandeep-singh",
     initials: "AS",
     first: "Amandeep",
