@@ -99,7 +99,7 @@ const PEOPLE = [
     last: "Karwasra",
     role: "Data Privacy Consultant",
     image: "assets/manuraje_karwasra.jpg",
-    short: "8+ Years of Experience in Data Privacy, Cybersecurity, and Compliance.",
+    short: "8+ Years of Experience as a Data Privacy, Process Improvement, and Policy Consultant.",
     noDetail: true,
   },
   {
